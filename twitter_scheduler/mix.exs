@@ -25,7 +25,7 @@ defmodule TwitterScheduler.MixProject do
     [
       {:credo, "~> 0.9.3"},
       {:quantum, "~> 2.2"},
-      {:timex, "~> 3.3"}
+      {:timex, "~> 3.0"}
     ]
   end
 end

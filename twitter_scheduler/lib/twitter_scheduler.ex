@@ -1,18 +1,14 @@
 defmodule TwitterScheduler do
-  @moduledoc """
-  Documentation for TwitterScheduler.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
 
-  ## Examples
+    children = [
+      worker(TwitterScheduler.Scheduler, [])
+    ]
 
-      iex> TwitterScheduler.hello
-      :world
-
-  """
-  def hello do
-    :world
+    opts = [stategy: :one_for_one, name: TwitterScheduler.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 end
